@@ -63,7 +63,7 @@ if ($old_cacti_version == $config["cacti_version"]) {
 }
 
 function verify_php_extensions() {
-	$extensions = array("session", "sockets", "mysql", "xml");
+	$extensions = array("session", "sockets", "sqlite3", "xml");
 	$ok = true;
 	$missing_extension = "	<p style='font-family: Verdana, Arial; font-size: 16px; font-weight: bold; color: red;'>Error</p>
 							<p style='font-family: Verdana, Arial; font-size: 12px;'>The following PHP extensions are missing:</p><ul>";

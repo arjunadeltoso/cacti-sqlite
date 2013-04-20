@@ -9,5 +9,7 @@ The original work was published by beagle1 on Cacti Forums (http://forums.cacti.
 Installation
 ------------
 
+```sh
 sqlite3 /path/to/db < cacti-sqlite.sql
+```
 configure include/config.php with the proper db path and follow the usual cacti configuration.
