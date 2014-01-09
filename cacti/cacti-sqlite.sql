@@ -1296,7 +1296,7 @@ INSERT INTO "graph_templates_graph" VALUES (44,0,0,32,'',1,'on','|host_descripti
 INSERT INTO "graph_templates_graph" VALUES (45,0,0,33,'',1,'on','|host_description| - Traffic','','',120,'',500,'','100','','0','','bytes per second','0','on','','on','',2,'','','0','','','on','','on','',1000,'0','','','on','','','','');
 INSERT INTO "graph_templates_graph" VALUES (47,0,0,34,'',1,'on','|host_description| -','','',120,'',500,'','100','','0','on','','0','on','','on','',2,'','','0','','','','','on','',1000,'0','','','on','','','','');
 CREATE TABLE "graph_templates_item" (
-  "id" int(12)  NOT NULL ,
+  "id" INTEGER PRIMARY KEY,
   "hash" varchar(32) NOT NULL DEFAULT '',
   "local_graph_template_item_id" int(12)  NOT NULL DEFAULT '0',
   "local_graph_id" mediumint(8)  NOT NULL DEFAULT '0',
@@ -1311,8 +1311,7 @@ CREATE TABLE "graph_templates_item" (
   "value" varchar(255) DEFAULT NULL,
   "hard_return" char(2) DEFAULT NULL,
   "gprint_id" mediumint(8)  NOT NULL DEFAULT '0',
-  "sequence" mediumint(8)  NOT NULL DEFAULT '0',
-  PRIMARY KEY ("id")
+  "sequence" mediumint(8)  NOT NULL DEFAULT '0'
 );
 INSERT INTO "graph_templates_item" VALUES (9,'0470b2427dbfadb6b8346e10a71268fa',0,0,2,54,22,'FF',7,2,1,'Inbound','','',2,1);
 INSERT INTO "graph_templates_item" VALUES (10,'84a5fe0db518550266309823f994ce9c',0,0,2,54,0,'FF',9,2,4,'Current:','','',2,2);
