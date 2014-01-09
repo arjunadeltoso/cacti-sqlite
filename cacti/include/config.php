@@ -25,10 +25,10 @@
 /* make sure these values refect your actual database/host/user/password */
 $database_type = "sqlite";
 $database_default="main";
-$database_hostname = "";
+$database_hostname = "localhost";
 $database_username = "";
 $database_password = "";
-$database_port = "/var/lib/sqlite/db2.db";
+$database_port = "/var/lib/sqlite/cacti.db";
 $database_ssl = false;
 
 /*
