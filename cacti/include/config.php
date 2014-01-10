@@ -28,7 +28,7 @@ $database_default="main";
 $database_hostname = "localhost";
 $database_username = "";
 $database_password = "";
-$database_port = "/var/lib/sqlite/cacti.db";
+$database_port = "/var/www/cacti/cacti.db";
 $database_ssl = false;
 
 /*
