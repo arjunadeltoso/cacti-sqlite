@@ -422,7 +422,7 @@ function push_out_graph_input($graph_template_input_id, $graph_template_item_id,
 			$i++;
 		}
 
-		$values_to_apply = db_fetch_assoc("select local_graph_id," . $graph_input["column_name"] . " as " . $graph_input["column_name"] . " from graph_templates_item where graph_template_id=" . $graph_input["graph_template_id"] . " and local_graph_id>0 and !(" . array_to_sql_or($new_session_members, "local_graph_template_item_id") . ") $sql_include_items group by local_graph_id");
+		$values_to_apply = db_fetch_assoc("select local_graph_id," . $graph_input["column_name"] . " as " . $graph_input["column_name"] . " from graph_templates_item where graph_template_id=" . $graph_input["graph_template_id"] . " and local_graph_id>0 and not (" . array_to_sql_or($new_session_members, "local_graph_template_item_id") . ") $sql_include_items group by local_graph_id");
 	}
 
 	if (sizeof($values_to_apply) > 0) {
