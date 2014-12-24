@@ -288,7 +288,7 @@ function item() {
 			graph_templates_item.graph_type_id as graph_type_id,
 			graph_templates_item.consolidation_function_id as consolidation_function_id,
 			data_template_data.name||' - '||data_template_rrd.data_source_name as data_source_name,
-			cdef.name as cdef_name as cdef_name,
+			cdef.name as cdef_name,
 			colors.hex as hex
 			from graph_templates_item
 			left join data_template_rrd on (graph_templates_item.task_item_id=data_template_rrd.id)

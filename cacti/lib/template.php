@@ -52,20 +52,20 @@ function push_out_data_source_custom_data($data_template_id) {
 	/* pull out all custom templated 'input' values from the template itself 
 	 * templated items are selected by querying t_value = '' OR t_value = NULL */
 	$template_input_fields = array_rekey(db_fetch_assoc("SELECT " .
-			"data_input_fields.id as id, " .
-			"data_input_fields.type_code as type_code, " .
-			"data_input_data.value as value, " .
-			"data_input_data.t_value as t_value " .
-			"FROM data_input_fields " .
-			"INNER JOIN (data_template_data " .
-			"INNER JOIN data_input_data " .
-			"ON data_template_data.id = data_input_data.data_template_data_id) " .
-			"ON data_input_fields.id = data_input_data.data_input_field_id " .
-			"WHERE (data_input_fields.input_output='in') " .
-			"AND (data_input_data.t_value='' OR data_input_data.t_value IS NULL) " .
-			"AND (data_input_data.data_template_data_id=" . $data_template_data["id"] . ") " .
-			"AND (data_template_data.local_data_template_data_id=0)"), "id", array("type_code", "value", "t_value"));
-
+                        "data_input_fields.id as id, " .
+                        "data_input_fields.type_code as type_code, " .
+                        "data_input_data.value as value, " .
+                        "data_input_data.t_value as t_value " .
+                        "FROM data_input_fields, " .
+                        "data_template_data, " .
+                        "data_input_data " .
+                        "WHERE data_template_data.id = data_input_data.data_template_data_id " .
+                        "AND data_input_fields.id = data_input_data.data_input_field_id " .
+                        "AND (data_input_fields.input_output='in') " .
+                        "AND (data_input_data.t_value='' OR data_input_data.t_value IS NULL) " .
+                        "AND (data_input_data.data_template_data_id=" . $data_template_data["id"] . ") " .
+                        "AND (data_template_data.local_data_template_data_id=0)"), "id", array("type_code", "value", "t_value"));
+                        
 	/* which data_input_fields are templated? */
 	$dif_ct = 0;
 	$dif_in_str = "";
@@ -422,7 +422,7 @@ function push_out_graph_input($graph_template_input_id, $graph_template_item_id,
 			$i++;
 		}
 
-		$values_to_apply = db_fetch_assoc("select local_graph_id," . $graph_input["column_name"] . " as " . $graph_input["column_name"] . " from graph_templates_item where graph_template_id=" . $graph_input["graph_template_id"] . " and local_graph_id>0 and !(" . array_to_sql_or($new_session_members, "local_graph_template_item_id") . ") $sql_include_items group by local_graph_id");
+		$values_to_apply = db_fetch_assoc("select local_graph_id," . $graph_input["column_name"] . " as " . $graph_input["column_name"] . " from graph_templates_item where graph_template_id=" . $graph_input["graph_template_id"] . " and local_graph_id>0 and not (" . array_to_sql_or($new_session_members, "local_graph_template_item_id") . ") $sql_include_items group by local_graph_id");
 	}
 
 	if (sizeof($values_to_apply) > 0) {

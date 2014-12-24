@@ -685,7 +685,7 @@ function template() {
 
 	$template_list = db_fetch_assoc("SELECT
 		data_template.id,
-		data_template.name,
+		data_template.name as name,
 		data_input.name AS data_input_method,
 		data_template_data.active AS active
 		FROM (data_template,data_template_data)
